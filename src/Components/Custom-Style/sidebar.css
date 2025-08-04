@@ -1,0 +1,35 @@
+.sidebar-container {
+    transition: width 0.3s ease-in-out;
+    width: 250px; /* Ukuran default */
+  }
+  
+  .sidebar-container.closed {
+    width: 80px; /* Ukuran saat tertutup */
+  }
+  
+  .sidebar-container .fa-bars {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar-container.closed .fa-bars {
+    transform: rotate(180deg);
+  }
+
+/* Efek hover untuk setiap item di sidebar */
+.sidebar-content .nav-link {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efek hover untuk menu */
+.sidebar-content .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Efek warna hover */
+    transform: translateX(5px); /* Sedikit geser ke kanan */
+    border-radius: 5px;
+}
+
+/* Efek hover untuk ikon */
+.sidebar-content .nav-link:hover i {
+    color: #f1c40f; /* Warna ikon berubah */
+    transition: color 0.3s ease;
+}
