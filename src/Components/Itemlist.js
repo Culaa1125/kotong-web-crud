@@ -22,7 +22,7 @@ function Itemlist() {
             } else if (resData.data && Array.isArray(resData.data)) {
                 setBarangData(resData.data);
             } else {
-                setBarangData([]); // Inisialisasi dengan array kosong jika data tidak ada
+                setBarangData([]);
                 console.log('Unexpected data format:', resData);
             }
         } catch (error) {
@@ -35,11 +35,10 @@ function Itemlist() {
         const res = await axios.delete("http://localhost/reactcrudphp/api/user.php/" + id);
         setMessage(res.data.success);
         getBarangData();
-        setShowModal(true); // Tampilkan modal setelah delete
+        setShowModal(true);
     };
 
     useEffect(() => {
-        // Memastikan bahwa backdrop muncul saat modal dibuka
         if (showModal) {
             const modalElement = document.getElementById('deleteModal');
             const backdrop = document.createElement('div');
@@ -49,13 +48,12 @@ function Itemlist() {
     }, [showModal]);
 
     const handleModalClose = () => {
-        setShowModal(false);  // Menyembunyikan modal
-        navigate('/itemlist'); // Pindah ke halaman userlist setelah modal ditutup
-
-        // Menghapus backdrop secara manual
+        setShowModal(false);
+        navigate('/itemlist');
+        
         const backdrop = document.querySelector('.modal-backdrop');
         if (backdrop) {
-            backdrop.remove(); // Menghapus backdrop jika ada
+            backdrop.remove();
         }
     };
 
