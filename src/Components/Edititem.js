@@ -25,26 +25,24 @@ function Edititem() {
     useEffect(() => {
         const modalElement = document.getElementById('editModal');
         const modal = new window.bootstrap.Modal(modalElement, {
-            backdrop: true,  // Pastikan backdrop aktif
-            keyboard: false  // Menonaktifkan penutupan modal dengan keyboard
+            backdrop: true,
+            keyboard: false  
         });
         if (showModal) {
-            modal.show();  // Tampilkan modal jika showModal true
+            modal.show();
         }
     }, [showModal]);
 
     useEffect(() => {
         return () => {
-            // Menutup modal dan menghapus backdrop saat komponen unmount
             const modalElement = document.getElementById('editModal');
             const modal = window.bootstrap.Modal.getInstance(modalElement);
             if (modal) {
-                modal.hide(); // Menyembunyikan modal saat berpindah halaman
+                modal.hide();
             }
-            // Menghapus backdrop manual jika masih ada
             const backdrop = document.querySelector('.modal-backdrop');
             if (backdrop) {
-                backdrop.remove(); // Menghapus backdrop jika masih ada di DOM
+                backdrop.remove();
             }
         };
     }, []);
@@ -75,7 +73,7 @@ function Edititem() {
 
     const handleModalClose = () => {
         setShowModal(false);
-        navigate('/itemlist');  // Pindah ke halaman tabel setelah modal ditutup
+        navigate('/itemlist');
     }
 
     return(
