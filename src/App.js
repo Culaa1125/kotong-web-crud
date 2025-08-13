@@ -17,7 +17,6 @@ function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuthenticated') === 'true');
 
   useEffect(() => {
-    // Update auth status saat route berubah
     setIsAuth(localStorage.getItem('isAuthenticated') === 'true');
   }, [location]);
 
