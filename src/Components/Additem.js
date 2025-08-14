@@ -15,7 +15,6 @@ function Additem() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Status otomatis: jika stok > 0 maka tersedia (1), jika 0 maka tidak tersedia (0)
             const autoStatus = Number(formvalue.stokbarang) > 0 ? "1" : "0";
             const formData = {
                 namabarang: formvalue.namabarang,
@@ -72,7 +71,6 @@ function Additem() {
 
     return (
         <React.Fragment>
-            {/* Modal */}
             <div>
                 <div className={`modal fade ${showModal ? 'show' : ''}`} id="addModal" tabIndex="999"
                     aria-labelledby="addModalLabel" aria-hidden="true"
@@ -94,7 +92,6 @@ function Additem() {
                 </div>
             </div>
 
-            {/* Form */}
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-6 mt-4">
