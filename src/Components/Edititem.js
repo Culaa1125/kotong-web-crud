@@ -51,7 +51,6 @@ function Edititem() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Status otomatis sesuai stok
             const autoStatus = Number(formvalue.stokbarang) > 0 ? "1" : "0";
             const formData = {
                 id: id,
@@ -84,7 +83,6 @@ function Edititem() {
 
     return (
         <React.Fragment>
-            {/* Modal */}
             <div>
                 <div className={`modal fade ${showModal ? 'show' : ''}`} id="editModal" tabIndex="999"
                     aria-labelledby="editModalLabel" aria-hidden="true"
@@ -106,7 +104,6 @@ function Edititem() {
                 </div>
             </div>
 
-            {/* Form */}
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-6 mt-4">
