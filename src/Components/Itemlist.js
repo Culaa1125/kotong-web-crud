@@ -59,7 +59,6 @@ function Itemlist() {
 
     return (
         <React.Fragment>
-            {/* Modal */}
             <div>
                 <div className={`modal fade ${showModal ? 'show' : ''}`} id="deleteModal" tabIndex="-1"
                     aria-labelledby="deleteModalLabel" aria-hidden="true"
@@ -81,7 +80,6 @@ function Itemlist() {
                 </div>
             </div>
 
-            {/* Table */}
             <div className="container mx-4">
                 <div className="row justify-content-center">
                     <div className="col-auto mt-4">
