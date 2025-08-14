@@ -15,7 +15,7 @@ function Home() {
 
     const getBarangData = async () => {
         try {
-            const reqData = await fetch("http://localhost/reactcrudphp/api/user.php");
+            const reqData = await fetch("http://localhost/kotong-web-crud/api/barang.php");
             const resData = await reqData.json();
             console.log(resData);
             if (Array.isArray(resData)) {
@@ -33,13 +33,14 @@ function Home() {
     };
 
     const handleDelete = async (id) => {
-        const res = await axios.delete("http://localhost/kotong-web-crud/api/user.php/" + id);
+        const res = await axios.delete("http://localhost/kotong-web-crud/api/barang.php/" + id);
         setMessage(res.data.success);
         getBarangData();
     };
 
-    const totalTersedia = barangData.filter(item => item.status == 1).length;
-    const totalTidakTersedia = barangData.filter(item => item.status == 0).length;
+    const totalTersedia = barangData.filter(item => Number(item.stokbarang) > 0).length;
+    const totalTidakTersedia = barangData.filter(item => Number(item.stokbarang) === 0).length;
+
 
     return (
         <React.Fragment>

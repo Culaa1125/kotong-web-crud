@@ -30,7 +30,7 @@ function Login() {
         localStorage.setItem("user", JSON.stringify(data.user));
         setTimeout(() => {
           navigate("/");
-        }, 2500); // Delay untuk splash screen
+        }, 2500);
       } else {
         setLoading(false);
         alert(data.message || "Login gagal");

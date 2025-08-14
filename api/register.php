@@ -18,14 +18,14 @@ if ($method === "POST") {
     $password = $data->password;
 
     // cek jika username sudah ada
-    $check = mysqli_query($db_conn, "SELECT * FROM users WHERE username='$username'");
+    $check = mysqli_query($db_conn, "SELECT * FROM user WHERE username='$username'");
     if (mysqli_num_rows($check) > 0) {
         echo json_encode(["success" => false, "message" => "Username sudah digunakan"]);
         return;
     }
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashedPassword')";
+    $sql = "INSERT INTO user (username, password) VALUES ('$username', '$hashedPassword')";
     if (mysqli_query($db_conn, $sql)) {
         echo json_encode(["success" => true, "message" => "User berhasil didaftarkan"]);
     } else {

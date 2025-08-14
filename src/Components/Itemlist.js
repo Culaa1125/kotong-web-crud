@@ -5,16 +5,16 @@ import axios from "axios";
 function Itemlist() {
     const [barangData, setBarangData] = useState([]);
     const [message, setMessage] = useState('');
-    const [showModal, setShowModal] = useState(false); 
+    const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         getBarangData();
     }, []);
 
     const getBarangData = async () => {
         try {
-            const reqData = await fetch("http://localhost/kotong-web-crud/api/user.php");
+            const reqData = await fetch("http://localhost/kotong-web-crud/api/barang.php");
             const resData = await reqData.json();
             console.log(resData);
             if (Array.isArray(resData)) {
@@ -32,7 +32,7 @@ function Itemlist() {
     };
 
     const handleDelete = async (id) => {
-        const res = await axios.delete("http://localhost/reactcrudphp/api/user.php/" + id);
+        const res = await axios.delete("http://localhost/kotong-web-crud/api/barang.php/" + id);
         setMessage(res.data.success);
         getBarangData();
         setShowModal(true);
@@ -50,7 +50,7 @@ function Itemlist() {
     const handleModalClose = () => {
         setShowModal(false);
         navigate('/itemlist');
-        
+
         const backdrop = document.querySelector('.modal-backdrop');
         if (backdrop) {
             backdrop.remove();
@@ -59,8 +59,11 @@ function Itemlist() {
 
     return (
         <React.Fragment>
+            {/* Modal */}
             <div>
-                <div className={`modal fade ${showModal ? 'show' : ''}`} id="deleteModal" tabIndex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" style={{ display: showModal ? 'block' : 'none' }}>
+                <div className={`modal fade ${showModal ? 'show' : ''}`} id="deleteModal" tabIndex="-1"
+                    aria-labelledby="deleteModalLabel" aria-hidden="true"
+                    style={{ display: showModal ? 'block' : 'none' }}>
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -78,6 +81,7 @@ function Itemlist() {
                 </div>
             </div>
 
+            {/* Table */}
             <div className="container mx-4">
                 <div className="row justify-content-center">
                     <div className="col-auto mt-4">
@@ -103,7 +107,7 @@ function Itemlist() {
                                         <td>{index + 1}</td>
                                         <td>{uData.namabarang}</td>
                                         <td>{uData.stokbarang}</td>
-                                        <td>{uData.status == 1 ? "Tersedia" : "Tidak Tersedia"}</td>
+                                        <td>{Number(uData.stokbarang) > 0 ? "Tersedia" : "Tidak Tersedia"}</td>
                                         <td>
                                             <Link to={`/edititem/${uData.id}`} className="btn btn-success mx-2">Edit</Link>
                                             <button className="btn btn-danger" onClick={() => handleDelete(uData.id)}>Delete</button>

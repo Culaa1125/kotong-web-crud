@@ -17,7 +17,7 @@ if ($method === "POST") {
     $username = $data->username;
     $password = $data->password;
 
-    $sql = "SELECT * FROM users WHERE username = '$username'";
+    $sql = "SELECT * FROM user WHERE username = '$username'";
     $result = mysqli_query($db_conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -27,7 +27,7 @@ if ($method === "POST") {
             echo json_encode([
                 "success" => true,
                 "user" => [
-                    "userid" => $user['userid'],
+                    "userid" => $user['id'],
                     "username" => $user['username']
                 ]
             ]);
