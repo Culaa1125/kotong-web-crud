@@ -62,7 +62,6 @@ switch($method){
         $namabarang = $barangpostdata->namabarang;
         $stokbarang = $barangpostdata->stokbarang;
 
-        // Status otomatis dari stok
         $status = ($stokbarang > 0) ? 1 : 0;
 
         $result = mysqli_query($db_conn, 
