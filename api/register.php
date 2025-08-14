@@ -17,7 +17,6 @@ if ($method === "POST") {
     $username = $data->username;
     $password = $data->password;
 
-    // cek jika username sudah ada
     $check = mysqli_query($db_conn, "SELECT * FROM user WHERE username='$username'");
     if (mysqli_num_rows($check) > 0) {
         echo json_encode(["success" => false, "message" => "Username sudah digunakan"]);
